@@ -1,6 +1,6 @@
 # pinpoint-mobile
 
-A new Flutter project.
+The mobile client from Pinpoint.
 
 ## Getting Started
 
