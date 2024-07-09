@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:flutter_map/flutter_map.dart";
+import 'package:latlong2/latlong.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,15 +14,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My App",
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text('Welcome to pinpoint'),),
-        body: Container(
-          child: const Center(
-            child: Text('Hello World!'),
-          ),
-        )
-      )
+        body: Stack(
+          children: [
+            FlutterMap(
+              options: MapOptions(
+                initialCenter: LatLng(51.509364, -0.128928),
+                initialZoom: 3.2,
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  userAgentPackageName: 'com.pinpoint.mobile',
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
